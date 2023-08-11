@@ -12,8 +12,34 @@ class ProfileTabPage extends StatefulWidget {
 class _ProfileTabPageState extends State<ProfileTabPage> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: ElevatedButton(
+    return Scaffold(
+      body: Center(
+        child: Column(
+          children: [
+            const Text("Hello, Upload your Cars image."),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                  onPressed: () {},
+                  child: const Icon(
+                    Icons.camera_alt_outlined,
+                    semanticLabel: "Camera",
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: const Icon(
+                    Icons.folder_open_sharp,
+                    semanticLabel: "Gallery",
+                  ),
+                ),
+              ],
+            )
+          ],
+        ),
+      ),
+      floatingActionButton: ElevatedButton(
         onPressed: () {
           fAuth.signOut();
           Navigator.pushReplacement(

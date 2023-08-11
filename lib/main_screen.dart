@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uber_clone/tab_pages/earning_tab.dart';
 import 'package:uber_clone/tab_pages/home_tab.dart';
-import 'package:uber_clone/tab_pages/profile.dart';
+import 'package:uber_clone/tab_pages/profile_tab.dart';
 import 'package:uber_clone/tab_pages/rating_tab.dart';
 
 class MainScreen extends StatefulWidget {

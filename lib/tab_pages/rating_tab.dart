@@ -11,7 +11,7 @@ class _RatingTabPageState extends State<RatingTabPage> {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text("Rating"),
+      child: Text("Your Ratings"),
     );
   }
 }

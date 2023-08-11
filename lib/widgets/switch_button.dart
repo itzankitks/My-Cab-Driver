@@ -1,16 +1,15 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:uber_clone/widgets/switch_button.dart';
 
-class HomeTabPage extends StatefulWidget {
-  const HomeTabPage({super.key});
+class SwitchScreen extends StatefulWidget {
+  const SwitchScreen({super.key});
 
   @override
-  State<HomeTabPage> createState() => _HomeTabPageState();
+  SwitchClass createState() => SwitchClass();
 }
 
-class _HomeTabPageState extends State<HomeTabPage> {
+class SwitchClass extends State {
   GoogleMapController? newGoogleMapController;
   final Completer<GoogleMapController> _controllerGoogleMap = Completer();
 
@@ -186,65 +185,35 @@ class _HomeTabPageState extends State<HomeTabPage> {
                 ''');
   }
 
-  int _taps = 0;
+  bool isSwitched = false;
+  var textValue = 'Switch is OFF';
 
-  void _incrementTaps() {
-    setState(() {
-      _taps++;
-    });
+  void toggleSwitch(bool value) {
+    if (isSwitched == false) {
+      setState(() {
+        isSwitched = true;
+        blackThemeGoogleMap();
+      });
+    } else {
+      setState(() {
+        isSwitched = false;
+        newGoogleMapController;
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    // bool isSwitched = false;
-    // void toggleSwitch(bool value) {
-    //   if (isSwitched == false) {
-    //     setState(() {
-    //       isSwitched = true;
-    //       blackThemeGoogleMap();
-    //     });
-    //   } else {
-    //     setState(() {
-    //       isSwitched = false;
-    //       newGoogleMapController;
-    //     });
-    //   }
-    // }
-
-    return Scaffold(
-      body: Stack(
-        children: [
-          GoogleMap(
-            mapType: MapType.normal,
-            myLocationEnabled: true,
-            initialCameraPosition: _kGooglePlex,
-            onMapCreated: (GoogleMapController controller) {
-              _controllerGoogleMap.complete(controller);
-              newGoogleMapController = controller;
-            },
-          ),
-        ],
+    return Transform.scale(
+      scale: 1.9,
+      child: Switch(
+        onChanged: toggleSwitch,
+        value: isSwitched,
+        activeColor: Colors.black87,
+        activeTrackColor: Colors.white,
+        inactiveThumbColor: Colors.white,
+        inactiveTrackColor: Colors.grey.shade900,
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          _incrementTaps;
-          print(_taps);
-          // setState(() {
-          //   if (_taps % 2 == 0) {
-          //     blackThemeGoogleMap();
-          //   } else if (_taps % 2 == 0) {
-          //     newGoogleMapController;
-          //   }
-          // });
-        },
-        backgroundColor: Colors.black,
-        child: const Icon(
-          Icons.nightlight_round_outlined,
-        ),
-      ),
-      //floatingActionButton: SwitchScreen(),
-      //floatingActionButton: Switch(value: isSwitched, onChanged: toggleSwitch),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }

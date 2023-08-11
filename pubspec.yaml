@@ -37,6 +37,8 @@ dependencies:
   firebase_database: ^10.2.4
   fluttertoast: ^8.2.2
   google_maps_flutter: ^2.4.0
+  firebase_storage: ^11.2.5
+  firebase_storage_web: ^3.6.5
   flutter:
     sdk: flutter
   device_preview: ^1.1.0
