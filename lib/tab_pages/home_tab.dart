@@ -18,21 +18,9 @@ class _HomeTabPageState extends State<HomeTabPage> {
     zoom: 14.4746,
   );
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          GoogleMap(
-            mapType: MapType.normal,
-            myLocationEnabled: true,
-            initialCameraPosition: _kGooglePlex,
-            onMapCreated: (GoogleMapController controller) {
-              _controllerGoogleMap.complete(controller);
-              newGoogleMapController = controller;
-
-              //for black theme google map
-              newGoogleMapController?.setMapStyle('''
+  blackThemeGoogleMap() {
+    //for black theme google map
+    newGoogleMapController?.setMapStyle('''
                     [
                       {
                         "elementType": "geometry",
@@ -195,9 +183,32 @@ class _HomeTabPageState extends State<HomeTabPage> {
                       }
                     ]
                 ''');
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        children: [
+          GoogleMap(
+            mapType: MapType.normal,
+            myLocationEnabled: true,
+            initialCameraPosition: _kGooglePlex,
+            onMapCreated: (GoogleMapController controller) {
+              _controllerGoogleMap.complete(controller);
+              newGoogleMapController = controller;
             },
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          blackThemeGoogleMap();
+        },
+        backgroundColor: Colors.black,
+        child: const Icon(
+          Icons.nightlight_round_outlined,
+        ),
       ),
     );
   }
