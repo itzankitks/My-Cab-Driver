@@ -10,7 +10,7 @@ void main() async {
   runApp(
     const MyApp(
       child: MaterialApp(
-        title: "Driver App",
+        title: "Driver's App",
         debugShowCheckedModeBanner: false,
         home: MySpalshScreen(),
       ),

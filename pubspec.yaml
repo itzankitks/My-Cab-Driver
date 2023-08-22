@@ -42,9 +42,11 @@ dependencies:
   firebase_storage_web: ^3.6.5
   image_picker: ^1.0.2
   device_preview: ^1.1.0
+  cloud_firestore: ^4.8.4
+  geolocator: ^10.0.0
+  flex_color_scheme: ^7.2.0
 
 dev_dependencies:
-  cloud_firestore: ^4.8.4
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
